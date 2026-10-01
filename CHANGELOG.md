@@ -1,8 +1,18 @@
-# Change Log - @langri-sha/monorepo
+# Change Log - monorepo-resolve
 
-<!-- This log was last generated on Wed, 30 Sep 2026 11:26:36 GMT and should not be manually modified. -->
+<!-- This log was last generated on Thu, 01 Oct 2026 01:41:43 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 0.5.19
+
+Thu, 01 Oct 2026 01:41:43 GMT
+
+### Patches
+
+- Rename from @langri-sha/monorepo (filip.dupanovic@gmail.com)
+- Publish from langri-sha/monorepo-resolve, which now owns this package and its history (filip.dupanovic@gmail.com)
+- Find the root by the text bun.lock that Bun writes, too (filip.dupanovic@gmail.com)
 
 ## 0.5.18
 

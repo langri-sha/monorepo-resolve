@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Find the root by the text bun.lock that Bun writes, too",
-  "packageName": "monorepo-resolve",
-  "email": "filip.dupanovic@gmail.com",
-  "dependentChangeType": "patch"
-}

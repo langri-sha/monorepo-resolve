@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Rename from @langri-sha/monorepo",
-  "packageName": "monorepo-resolve",
-  "email": "filip.dupanovic@gmail.com",
-  "dependentChangeType": "patch"
-}

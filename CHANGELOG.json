@@ -1,6 +1,33 @@
 {
-  "name": "@langri-sha/monorepo",
+  "name": "monorepo-resolve",
   "entries": [
+    {
+      "date": "Thu, 01 Oct 2026 01:41:43 GMT",
+      "version": "0.5.19",
+      "tag": "monorepo-resolve_v0.5.19",
+      "comments": {
+        "patch": [
+          {
+            "author": "filip.dupanovic@gmail.com",
+            "package": "monorepo-resolve",
+            "commit": "f12e647d0853384767a0437d2b16372b9d54e42e",
+            "comment": "Rename from @langri-sha/monorepo"
+          },
+          {
+            "author": "filip.dupanovic@gmail.com",
+            "package": "monorepo-resolve",
+            "commit": "f12e647d0853384767a0437d2b16372b9d54e42e",
+            "comment": "Publish from langri-sha/monorepo-resolve, which now owns this package and its history"
+          },
+          {
+            "author": "filip.dupanovic@gmail.com",
+            "package": "monorepo-resolve",
+            "commit": "f12e647d0853384767a0437d2b16372b9d54e42e",
+            "comment": "Find the root by the text bun.lock that Bun writes, too"
+          }
+        ]
+      }
+    },
     {
       "date": "Wed, 30 Sep 2026 11:26:36 GMT",
       "version": "0.5.18",
