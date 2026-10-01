@@ -1,5 +1,5 @@
 {
-  "name": "@langri-sha/monorepo",
+  "name": "monorepo-resolve",
   "version": "0.5.18",
   "description": "Resolve paths relative to the root of a monorepo",
   "keywords": [

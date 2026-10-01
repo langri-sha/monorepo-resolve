@@ -1,7 +1,7 @@
 import { Project, TypeScriptConfig } from '@langri-sha/projen-project'
 
 const project = new Project({
-  name: '@langri-sha/monorepo',
+  name: 'monorepo-resolve',
   package: {
     authorEmail: 'filip.dupanovic@gmail.com',
     authorName: 'Filip Dupanović',

@@ -1,7 +1,7 @@
 {
   "type": "patch",
   "comment": "Publish from langri-sha/monorepo-resolve, which now owns this package and its history",
-  "packageName": "@langri-sha/monorepo",
+  "packageName": "monorepo-resolve",
   "email": "filip.dupanovic@gmail.com",
   "dependentChangeType": "patch"
 }
