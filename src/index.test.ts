@@ -14,7 +14,7 @@ beforeEach(() => {
 })
 
 test('root points to the monorepo root correctly', () => {
-  expect(monorepo.root).toBe(path.resolve(__dirname, '..', '..', '..'))
+  expect(monorepo.root).toBe(path.resolve(__dirname, '..'))
 })
 
 test('root can be updated correctly', () => {
@@ -24,9 +24,9 @@ test('root can be updated correctly', () => {
   expect(monorepo.root).toBe(newRoot)
 
   monorepo.root = undefined
-  expect(monorepo.root).toBe(path.resolve(__dirname, '..', '..', '..'))
+  expect(monorepo.root).toBe(path.resolve(__dirname, '..'))
 })
 
 test('resolves the monorepo root correctly', () => {
-  expect(monorepo.resolve()).toBe(path.resolve(__dirname, '..', '..', '..'))
+  expect(monorepo.resolve()).toBe(path.resolve(__dirname, '..'))
 })
