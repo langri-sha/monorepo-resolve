@@ -1,4 +1,4 @@
-# @langri-sha/monorepo
+# monorepo-resolve
 
 A utility package that helps you resolve paths relative to your monorepo root.
 
@@ -10,7 +10,7 @@ common path, even when changing directories in your workspace.
 Install the package:
 
 ```sh
-npm install -D @langri-sha/monorepo
+npm install -D monorepo-resolve
 ```
 
 The root of your repository will be synchronously resolved by going upwards
@@ -18,7 +18,7 @@ until a package manager's lockfile is found, or it an error is thrown:
 
 ```js
 // /workspaces/acme-monorepo/packages/myapp/index.js
-import monorepo from '@langri-sha/monorepo'
+import monorepo from 'monorepo-resolve'
 
 monorepo.resolve('build', 'myapp') === '/workspaces/acme-monorepo/build/myapp'
 ```

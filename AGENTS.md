@@ -1,8 +1,8 @@
 # Agents orientation — `langri-sha/monorepo-resolve`
 
-`@langri-sha/monorepo` resolves paths relative to a monorepo's root, which it
-finds by looking upwards for a package manager's lockfile. The package is the
-repository root. It is to be renamed `monorepo-resolve` (langri-sha/projen#295).
+`monorepo-resolve` resolves paths relative to a monorepo's root, which it finds
+by looking upwards for a package manager's lockfile. The package is the
+repository root.
 
 ## Who owns which file
 
@@ -39,8 +39,8 @@ The Release workflow calls the shared Packages workflow with
 `tag-template: v{version}`, which tags each published version, e.g. `v0.5.19`,
 and `github-releases: true`, which creates a GitHub release with generated notes
 for it. Beachball's own `gitTags` stays off, since it would name the tags
-`@langri-sha/monorepo_v0.5.19`. A tag that already has a release is skipped, so
-the workflow is safe to rerun.
+`monorepo-resolve_v0.5.19`. A tag that already has a release is skipped, so the
+workflow is safe to rerun.
 
 `main` points at `src/` in the repository, and `publishConfig` swaps `main` and
 `types` for `dist/`, which `prepublishOnly` builds. The tarball ships `src/`
@@ -66,3 +66,6 @@ history reaches back to 2024-04-14, when the package started in
 `langri-sha/langri-sha.com`, which handed it to projen in July 2026. Issue and
 pull request numbers in those older messages refer to the two source
 repositories.
+
+Up to 0.5.18 it was published as `@langri-sha/monorepo`, which is deprecated in
+favour of this name.
