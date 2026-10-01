@@ -31,6 +31,7 @@ export default {
 
 const findRoot = (): string => {
   const result = findUpSync([
+    'bun.lock',
     'bun.lockb',
     'package-lock.json',
     'pnpm-lock.yaml',
