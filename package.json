@@ -55,7 +55,7 @@
     "typescript": "5.9.3",
     "vitest": "5.0.2"
   },
-  "packageManager": "pnpm@12.7.0",
+  "packageManager": "pnpm@12.8.1",
   "devEngines": {
     "runtime": {
       "name": "node",
