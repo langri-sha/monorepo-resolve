@@ -20,12 +20,12 @@ const project = new Project({
 
     deps: ['find-up@8.0.0'],
     devDeps: [
-      '@langri-sha/eslint-config@0.9.17',
-      '@langri-sha/lint-staged@0.9.8',
-      '@langri-sha/prettier@0.4.9',
+      '@langri-sha/eslint-config@0.9.18',
+      '@langri-sha/lint-staged@0.9.9',
+      '@langri-sha/prettier@0.4.10',
       '@langri-sha/projen-project@*',
       '@langri-sha/tsconfig@1.1.0',
-      '@langri-sha/vitest@0.2.1',
+      '@langri-sha/vitest@0.2.2',
       '@types/node@24.19.0',
       'vitest@5.0.2',
     ],
