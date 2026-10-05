@@ -13,8 +13,17 @@ Install the package:
 npm install -D monorepo-resolve
 ```
 
-The root of your repository will be synchronously resolved by going upwards
-until a package manager's lockfile is found, or an error is thrown:
+The root of your repository is resolved synchronously by walking upwards from
+the working directory, preferring:
+
+1. the nearest directory with a `pnpm-workspace.yaml`, or a `package.json` that
+   declares `workspaces`;
+2. otherwise, the nearest directory with a lockfile (`bun.lock`, `bun.lockb`,
+   `package-lock.json`, `pnpm-lock.yaml` or `yarn.lock`), which covers
+   single-package repositories.
+
+The walk stops at the first directory holding `.git`, so it never leaves the
+repository, and an error is thrown if neither is found:
 
 ```js
 // /workspaces/acme-monorepo/packages/myapp/index.js

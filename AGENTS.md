@@ -1,8 +1,8 @@
 # Agents orientation — `langri-sha/monorepo-resolve`
 
 `monorepo-resolve` resolves paths relative to a monorepo's root, which it finds
-by looking upwards for a package manager's lockfile. The package is the
-repository root.
+by looking upwards for a workspace definition, falling back to a package
+manager's lockfile. The package is the repository root.
 
 ## Who owns which file
 

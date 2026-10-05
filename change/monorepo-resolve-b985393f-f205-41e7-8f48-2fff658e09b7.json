@@ -1,0 +1,7 @@
+{
+  "type": "major",
+  "comment": "Find the root by workspace definition before falling back to a lockfile, and stop at the repository boundary",
+  "packageName": "monorepo-resolve",
+  "email": "filip.dupanovic@gmail.com",
+  "dependentChangeType": "patch"
+}

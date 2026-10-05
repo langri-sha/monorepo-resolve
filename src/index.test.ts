@@ -54,6 +54,45 @@ test.each([
   expect(monorepo.root).toBe(root)
 })
 
+test.each([
+  { file: 'pnpm-workspace.yaml', contents: '' },
+  { file: 'package.json', contents: '{ "workspaces": ["packages/*"] }' },
+])('prefers $file over a nearer lockfile', ({ file, contents }) => {
+  const root = fixture({
+    [file]: contents,
+    'packages/app/package-lock.json': '',
+  })
+
+  expect(monorepo.root).toBe(root)
+})
+
+test('ignores package.json files without workspaces', () => {
+  const root = fixture({
+    'pnpm-lock.yaml': '',
+    'packages/package.json': '{',
+    'packages/app/package.json': '{ "name": "app" }',
+  })
+
+  expect(monorepo.root).toBe(root)
+})
+
+test('falls back to the nearest lockfile', () => {
+  const root = fixture({ 'yarn.lock': '', 'packages/app/yarn.lock': '' })
+
+  expect(monorepo.root).toBe(path.join(root, 'packages', 'app'))
+})
+
+test.each([
+  { kind: 'directory', path: 'packages/.git/' },
+  { kind: 'file', path: 'packages/.git' },
+])('stops at a .git $kind', ({ path: git }) => {
+  fixture({ 'bun.lock': '', [git]: '' })
+
+  expect(() => monorepo.root).toThrow(
+    'Could not resolve the root directory of the monorepo',
+  )
+})
+
 test('resolves paths against the root', () => {
   const root = fixture({ 'pnpm-lock.yaml': '' })
 
