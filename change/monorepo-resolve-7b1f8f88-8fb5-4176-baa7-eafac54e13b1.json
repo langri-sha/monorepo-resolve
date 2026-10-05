@@ -1,7 +1,0 @@
-{
-  "type": "major",
-  "comment": "Add named resolve and context exports and an exports map, and give the not-found error a code",
-  "packageName": "monorepo-resolve",
-  "email": "filip.dupanovic@gmail.com",
-  "dependentChangeType": "patch"
-}

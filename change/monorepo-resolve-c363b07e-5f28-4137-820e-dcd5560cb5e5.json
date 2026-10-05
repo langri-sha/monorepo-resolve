@@ -1,7 +1,0 @@
-{
-  "type": "major",
-  "comment": "Remove the root setter in favor of MONOREPO_ROOT and make the default export the working directory's context",
-  "packageName": "monorepo-resolve",
-  "email": "filip.dupanovic@gmail.com",
-  "dependentChangeType": "patch"
-}

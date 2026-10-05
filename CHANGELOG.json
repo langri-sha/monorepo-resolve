@@ -2,6 +2,103 @@
   "name": "monorepo-resolve",
   "entries": [
     {
+      "date": "Mon, 05 Oct 2026 21:56:31 GMT",
+      "version": "1.0.0",
+      "tag": "monorepo-resolve_v1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "email not defined",
+            "package": "monorepo-resolve",
+            "commit": "db7145a5fad5127806fae76dc1e544cecf907a54",
+            "comment": "Update dependency @langri-sha/projen-project to v0.32.0"
+          },
+          {
+            "author": "filip.dupanovic@gmail.com",
+            "package": "monorepo-resolve",
+            "commit": "db7145a5fad5127806fae76dc1e544cecf907a54",
+            "comment": "Honor the root override in resolve()"
+          },
+          {
+            "author": "email not defined",
+            "package": "monorepo-resolve",
+            "commit": "db7145a5fad5127806fae76dc1e544cecf907a54",
+            "comment": "Update dependency pnpm to v12.8.2"
+          },
+          {
+            "author": "email not defined",
+            "package": "monorepo-resolve",
+            "commit": "db7145a5fad5127806fae76dc1e544cecf907a54",
+            "comment": "Update dependency @types/node to v24.19.1"
+          },
+          {
+            "author": "email not defined",
+            "package": "monorepo-resolve",
+            "commit": "db7145a5fad5127806fae76dc1e544cecf907a54",
+            "comment": "Update dependency vitest to v5.0.3"
+          },
+          {
+            "author": "email not defined",
+            "package": "monorepo-resolve",
+            "commit": "db7145a5fad5127806fae76dc1e544cecf907a54",
+            "comment": "Update langri-sha projen toolchain"
+          },
+          {
+            "author": "email not defined",
+            "package": "monorepo-resolve",
+            "commit": "db7145a5fad5127806fae76dc1e544cecf907a54",
+            "comment": "Update langri-sha projen toolchain"
+          },
+          {
+            "author": "email not defined",
+            "package": "monorepo-resolve",
+            "commit": "db7145a5fad5127806fae76dc1e544cecf907a54",
+            "comment": "Update dependency pnpm to v12.8.1"
+          }
+        ],
+        "minor": [
+          {
+            "author": "filip.dupanovic@gmail.com",
+            "package": "monorepo-resolve",
+            "commit": "db7145a5fad5127806fae76dc1e544cecf907a54",
+            "comment": "Add resolveAsync, which looks for the lockfile asynchronously"
+          },
+          {
+            "author": "filip.dupanovic@gmail.com",
+            "package": "monorepo-resolve",
+            "commit": "db7145a5fad5127806fae76dc1e544cecf907a54",
+            "comment": "Honor a MONOREPO_ROOT environment override"
+          },
+          {
+            "author": "filip.dupanovic@gmail.com",
+            "package": "monorepo-resolve",
+            "commit": "db7145a5fad5127806fae76dc1e544cecf907a54",
+            "comment": "Cache the detected root and anchor on a cwd through context()"
+          }
+        ],
+        "major": [
+          {
+            "author": "filip.dupanovic@gmail.com",
+            "package": "monorepo-resolve",
+            "commit": "db7145a5fad5127806fae76dc1e544cecf907a54",
+            "comment": "Drop root and the default export; resolve() returns the root"
+          },
+          {
+            "author": "filip.dupanovic@gmail.com",
+            "package": "monorepo-resolve",
+            "commit": "db7145a5fad5127806fae76dc1e544cecf907a54",
+            "comment": "Add named resolve and context exports and an exports map, and give the not-found error a code"
+          },
+          {
+            "author": "filip.dupanovic@gmail.com",
+            "package": "monorepo-resolve",
+            "commit": "db7145a5fad5127806fae76dc1e544cecf907a54",
+            "comment": "Remove the root setter in favor of MONOREPO_ROOT and make the default export the working directory's context"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 01 Oct 2026 01:41:43 GMT",
       "version": "0.5.19",
       "tag": "monorepo-resolve_v0.5.19",

@@ -1,6 +1,6 @@
 {
   "name": "monorepo-resolve",
-  "version": "0.5.19",
+  "version": "1.0.0",
   "description": "Resolve paths relative to the root of a monorepo",
   "keywords": [
     "lockfile",

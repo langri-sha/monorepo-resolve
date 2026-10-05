@@ -1,8 +1,35 @@
 # Change Log - monorepo-resolve
 
-<!-- This log was last generated on Thu, 01 Oct 2026 01:41:43 GMT and should not be manually modified. -->
+<!-- This log was last generated on Mon, 05 Oct 2026 21:56:31 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 1.0.0
+
+Mon, 05 Oct 2026 21:56:31 GMT
+
+### Major changes
+
+- Drop root and the default export; resolve() returns the root (filip.dupanovic@gmail.com)
+- Add named resolve and context exports and an exports map, and give the not-found error a code (filip.dupanovic@gmail.com)
+- Remove the root setter in favor of MONOREPO_ROOT and make the default export the working directory's context (filip.dupanovic@gmail.com)
+
+### Minor changes
+
+- Add resolveAsync, which looks for the lockfile asynchronously (filip.dupanovic@gmail.com)
+- Honor a MONOREPO_ROOT environment override (filip.dupanovic@gmail.com)
+- Cache the detected root and anchor on a cwd through context() (filip.dupanovic@gmail.com)
+
+### Patches
+
+- Update dependency @langri-sha/projen-project to v0.32.0
+- Honor the root override in resolve() (filip.dupanovic@gmail.com)
+- Update dependency pnpm to v12.8.2
+- Update dependency @types/node to v24.19.1
+- Update dependency vitest to v5.0.3
+- Update langri-sha projen toolchain
+- Update langri-sha projen toolchain
+- Update dependency pnpm to v12.8.1
 
 ## 0.5.19
 

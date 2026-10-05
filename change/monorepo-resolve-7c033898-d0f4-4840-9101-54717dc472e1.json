@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Honor a MONOREPO_ROOT environment override",
-  "packageName": "monorepo-resolve",
-  "email": "filip.dupanovic@gmail.com",
-  "dependentChangeType": "patch"
-}
