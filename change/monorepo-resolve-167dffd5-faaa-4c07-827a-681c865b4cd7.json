@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Honor the root override in resolve()",
+  "packageName": "monorepo-resolve",
+  "email": "filip.dupanovic@gmail.com",
+  "dependentChangeType": "patch"
+}

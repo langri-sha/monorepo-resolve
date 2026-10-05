@@ -14,7 +14,7 @@ npm install -D monorepo-resolve
 ```
 
 The root of your repository will be synchronously resolved by going upwards
-until a package manager's lockfile is found, or it an error is thrown:
+until a package manager's lockfile is found, or an error is thrown:
 
 ```js
 // /workspaces/acme-monorepo/packages/myapp/index.js
