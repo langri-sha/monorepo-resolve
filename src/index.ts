@@ -12,14 +12,9 @@ export interface ContextOptions {
 
 export interface Context {
   /**
-   * The monorepo root directory: `MONOREPO_ROOT`, else the nearest directory
-   * with a package manager's lockfile, looking upwards from the context's
-   * `cwd`.
-   */
-  readonly root: string
-
-  /**
-   * Resolves paths relative to the monorepo root directory.
+   * Resolves paths relative to the monorepo root directory: `MONOREPO_ROOT`,
+   * else the nearest directory with a package manager's lockfile, looking
+   * upwards from the context's `cwd`. Without segments, returns the root.
    */
   resolve: (...pathSegments: string[]) => string
 }
@@ -41,15 +36,12 @@ const roots = new Map<string, string>()
 export const context = ({ cwd }: ContextOptions = {}): Context => {
   const start = cwd === undefined ? undefined : path.resolve(cwd)
 
-  const getRoot = (): string =>
-    process.env.MONOREPO_ROOT || detectRoot(start ?? process.cwd())
-
   return {
-    get root() {
-      return getRoot()
-    },
-
-    resolve: (...pathSegments) => path.resolve(getRoot(), ...pathSegments),
+    resolve: (...pathSegments) =>
+      path.resolve(
+        process.env.MONOREPO_ROOT || detectRoot(start ?? process.cwd()),
+        ...pathSegments,
+      ),
   }
 }
 
@@ -82,5 +74,3 @@ const detectRoot = (start: string): string => {
 
   return detected
 }
-
-export default workingDirectory
