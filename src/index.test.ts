@@ -40,6 +40,7 @@ beforeEach(() => {
 
 afterEach(() => {
   vi.restoreAllMocks()
+  vi.unstubAllEnvs()
 })
 
 test.each([
@@ -80,6 +81,31 @@ test('resolves against the configured root', () => {
   expect(monorepo.resolve('build', 'app')).toBe(
     path.join(newRoot, 'build', 'app'),
   )
+})
+
+test('honors MONOREPO_ROOT', () => {
+  fixture({ 'pnpm-lock.yaml': '' })
+  const envRoot = temporaryDirectory()
+  vi.stubEnv('MONOREPO_ROOT', envRoot)
+
+  expect(monorepo.root).toBe(envRoot)
+  expect(monorepo.resolve('build')).toBe(path.join(envRoot, 'build'))
+})
+
+test('prefers the configured root over MONOREPO_ROOT', () => {
+  fixture({ 'pnpm-lock.yaml': '' })
+  const newRoot = temporaryDirectory()
+  vi.stubEnv('MONOREPO_ROOT', temporaryDirectory())
+  monorepo.root = newRoot
+
+  expect(monorepo.root).toBe(newRoot)
+})
+
+test('ignores an empty MONOREPO_ROOT', () => {
+  const root = fixture({ 'pnpm-lock.yaml': '' })
+  vi.stubEnv('MONOREPO_ROOT', '')
+
+  expect(monorepo.root).toBe(root)
 })
 
 test('throws when no root is found', () => {
