@@ -24,6 +24,14 @@ export interface Context {
   resolve: (...pathSegments: string[]) => string
 }
 
+const lockfiles = [
+  'bun.lock',
+  'bun.lockb',
+  'package-lock.json',
+  'pnpm-lock.yaml',
+  'yarn.lock',
+]
+
 let root: string | undefined
 
 const roots = new Map<string, string>()
@@ -32,7 +40,7 @@ const roots = new Map<string, string>()
  * Creates a context anchored on `cwd`. Lookups are synchronous, throw if the
  * root cannot be resolved, and cache detected roots per start directory.
  */
-const context = ({ cwd }: ContextOptions = {}): Context => {
+export const context = ({ cwd }: ContextOptions = {}): Context => {
   const start = cwd === undefined ? undefined : path.resolve(cwd)
 
   const getRoot = (): string =>
@@ -47,24 +55,26 @@ const context = ({ cwd }: ContextOptions = {}): Context => {
   }
 }
 
+const workingDirectory = context()
+
+/**
+ * Resolves paths relative to the monorepo root directory, looking upwards from
+ * the working directory.
+ */
+export const resolve = workingDirectory.resolve
+
 const detectRoot = (start: string): string => {
   let detected = roots.get(start)
 
   if (!detected) {
-    const result = findUpSync(
-      [
-        'bun.lock',
-        'bun.lockb',
-        'package-lock.json',
-        'pnpm-lock.yaml',
-        'yarn.lock',
-      ],
-      { cwd: start },
-    )
+    const result = findUpSync(lockfiles, { cwd: start })
 
     if (!result) {
-      throw new Error(
-        'Could not resolve the root directory of the monorepo. Make sure you have a lockfile generated first.',
+      throw Object.assign(
+        new Error(
+          `Could not find the monorepo root looking upwards from ${start}: no lockfile (${lockfiles.join(', ')}).`,
+        ),
+        { code: 'ERR_MONOREPO_ROOT_NOT_FOUND' },
       )
     }
 
@@ -75,10 +85,8 @@ const detectRoot = (start: string): string => {
   return detected
 }
 
-const workingDirectory = context()
-
 export default {
-  resolve: workingDirectory.resolve,
+  resolve,
 
   context,
 

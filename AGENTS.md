@@ -42,10 +42,10 @@ for it. Beachball's own `gitTags` stays off, since it would name the tags
 `monorepo-resolve_v0.5.19`. A tag that already has a release is skipped, so the
 workflow is safe to rerun.
 
-`main` points at `src/` in the repository, and `publishConfig` swaps `main` and
-`types` for `dist/`, which `prepublishOnly` builds. The tarball ships `src/`
-beside `dist/`, which the declaration maps point into, as every release from
-`langri-sha/projen` did.
+`main` and `exports` point at `src/` in the repository, and `publishConfig`
+swaps them and `types` for `dist/`, which `prepublishOnly` builds. The tarball
+ships `src/` beside `dist/`, which the declaration maps point into, as every
+release from `langri-sha/projen` did.
 
 There is deliberately no `engines` field. Published from the root, it would bind
 consumers to the Node.js release this repository is developed on, so that lives

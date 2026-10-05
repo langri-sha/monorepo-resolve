@@ -10,7 +10,7 @@ import {
   vi,
 } from '@langri-sha/vitest'
 
-import monorepo from './index'
+import monorepo, { context, resolve } from './index'
 
 const fixture = (files: Record<string, string> = {}): string => {
   const root = temporaryDirectory()
@@ -140,12 +140,23 @@ test('a context honors the configured root', () => {
 })
 
 test('throws when no root is found', () => {
-  fixture()
+  const root = fixture()
 
   expect(() => monorepo.root).toThrow(
-    'Could not resolve the root directory of the monorepo',
+    expect.objectContaining({ code: 'ERR_MONOREPO_ROOT_NOT_FOUND' }),
   )
   expect(() => monorepo.resolve()).toThrow(
-    'Could not resolve the root directory of the monorepo',
+    `from ${path.join(root, 'packages', 'app')}:`,
   )
+  expect(() => monorepo.resolve()).toThrow(
+    'no lockfile (bun.lock, bun.lockb, package-lock.json, pnpm-lock.yaml, yarn.lock)',
+  )
+})
+
+test('exports resolve and context by name', () => {
+  const root = fixture({ 'pnpm-lock.yaml': '', 'tools/yarn.lock': '' })
+  const tools = path.join(root, 'tools')
+
+  expect(resolve('build')).toBe(path.join(root, 'build'))
+  expect(context({ cwd: tools }).root).toBe(tools)
 })
