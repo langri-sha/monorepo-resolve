@@ -32,9 +32,3 @@ monorepo.root = temporaryDirectory()
 // ...elsewhere in your codebase
 monorepo.resolve('build', 'myapp') === '/tmp/aa11bb22/build/myapp'
 ```
-
-## See
-
-- [`find-up`]
-
-[`find-up`]: https://github.com/sindresorhus/find-up

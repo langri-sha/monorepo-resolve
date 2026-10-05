@@ -18,7 +18,6 @@ const project = new Project({
     repository: 'git+https://github.com/langri-sha/monorepo-resolve.git',
     type: 'module',
 
-    deps: ['find-up@8.0.0'],
     devDeps: [
       '@langri-sha/eslint-config@0.9.18',
       '@langri-sha/lint-staged@0.9.9',

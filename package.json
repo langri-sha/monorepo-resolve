@@ -34,9 +34,6 @@
     "renovate": "pnpm exec projen renovate",
     "test": "vitest"
   },
-  "dependencies": {
-    "find-up": "8.0.0"
-  },
   "devDependencies": {
     "@langri-sha/eslint-config": "0.9.18",
     "@langri-sha/lint-staged": "0.9.9",

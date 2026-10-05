@@ -1,6 +1,5 @@
+import { statSync } from 'node:fs'
 import path from 'node:path'
-
-import { findUpSync } from 'find-up'
 
 let root: string | undefined
 
@@ -25,22 +24,29 @@ export default {
   },
 }
 
+const lockfiles = [
+  'bun.lock',
+  'bun.lockb',
+  'package-lock.json',
+  'pnpm-lock.yaml',
+  'yarn.lock',
+]
+
 const getRoot = (): string => root || findRoot()
 
 const findRoot = (): string => {
-  const result = findUpSync([
-    'bun.lock',
-    'bun.lockb',
-    'package-lock.json',
-    'pnpm-lock.yaml',
-    'yarn.lock',
-  ])
+  for (let directory = process.cwd(); ; directory = path.dirname(directory)) {
+    if (lockfiles.some((file) => isFile(path.join(directory, file)))) {
+      return directory
+    }
 
-  if (!result) {
-    throw new Error(
-      'Could not resolve the root directory of the monorepo. Make sure you have a lockfile generated first.',
-    )
+    if (directory === path.dirname(directory)) {
+      throw new Error(
+        'Could not resolve the root directory of the monorepo. Make sure you have a lockfile generated first.',
+      )
+    }
   }
-
-  return path.dirname(result)
 }
+
+const isFile = (file: string): boolean =>
+  statSync(file, { throwIfNoEntry: false })?.isFile() ?? false
