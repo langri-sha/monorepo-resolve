@@ -12,6 +12,28 @@ import {
 
 import monorepo from './index'
 
+const fixture = (files: Record<string, string> = {}): string => {
+  const root = temporaryDirectory()
+  const cwd = path.join(root, 'packages', 'app')
+
+  mkdirSync(cwd, { recursive: true })
+
+  for (const [file, contents] of Object.entries(files)) {
+    const target = path.join(root, file)
+
+    if (file.endsWith('/')) {
+      mkdirSync(target, { recursive: true })
+    } else {
+      mkdirSync(path.dirname(target), { recursive: true })
+      writeFileSync(target, contents)
+    }
+  }
+
+  vi.spyOn(process, 'cwd').mockReturnValue(cwd)
+
+  return root
+}
+
 beforeEach(() => {
   monorepo.root = undefined
 })
@@ -20,25 +42,38 @@ afterEach(() => {
   vi.restoreAllMocks()
 })
 
-test('root points to the monorepo root correctly', () => {
-  expect(monorepo.root).toBe(path.resolve(__dirname, '..'))
+test.each([
+  'bun.lock',
+  'bun.lockb',
+  'package-lock.json',
+  'pnpm-lock.yaml',
+  'yarn.lock',
+])('finds the root by %s', (lockfile) => {
+  const root = fixture({ [lockfile]: '' })
+
+  expect(monorepo.root).toBe(root)
+})
+
+test('resolves paths against the root', () => {
+  const root = fixture({ 'pnpm-lock.yaml': '' })
+
+  expect(monorepo.resolve()).toBe(root)
+  expect(monorepo.resolve('build', 'app')).toBe(path.join(root, 'build', 'app'))
 })
 
 test('root can be updated correctly', () => {
+  const root = fixture({ 'pnpm-lock.yaml': '' })
   const newRoot = temporaryDirectory()
   monorepo.root = newRoot
 
   expect(monorepo.root).toBe(newRoot)
 
   monorepo.root = undefined
-  expect(monorepo.root).toBe(path.resolve(__dirname, '..'))
-})
-
-test('resolves the monorepo root correctly', () => {
-  expect(monorepo.resolve()).toBe(path.resolve(__dirname, '..'))
+  expect(monorepo.root).toBe(root)
 })
 
 test('resolves against the configured root', () => {
+  fixture({ 'pnpm-lock.yaml': '' })
   const newRoot = temporaryDirectory()
   monorepo.root = newRoot
 
@@ -47,13 +82,13 @@ test('resolves against the configured root', () => {
   )
 })
 
-test.each(['bun.lock', 'bun.lockb'])('finds the root by %s', (lockfile) => {
-  const root = temporaryDirectory()
-  const cwd = path.join(root, 'packages', 'app')
+test('throws when no root is found', () => {
+  fixture()
 
-  mkdirSync(cwd, { recursive: true })
-  writeFileSync(path.join(root, lockfile), '')
-  vi.spyOn(process, 'cwd').mockReturnValue(cwd)
-
-  expect(monorepo.root).toBe(root)
+  expect(() => monorepo.root).toThrow(
+    'Could not resolve the root directory of the monorepo',
+  )
+  expect(() => monorepo.resolve()).toThrow(
+    'Could not resolve the root directory of the monorepo',
+  )
 })
