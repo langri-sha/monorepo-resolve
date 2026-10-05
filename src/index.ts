@@ -14,20 +14,18 @@ export default {
    * @returns
    */
   resolve: (...pathSegments: string[]): string =>
-    path.resolve(findRoot(), ...pathSegments),
+    path.resolve(getRoot(), ...pathSegments),
 
   get root(): string {
-    if (!root) {
-      return findRoot()
-    }
-
-    return root
+    return getRoot()
   },
 
   set root(newRoot: string | undefined) {
     root = newRoot
   },
 }
+
+const getRoot = (): string => root || findRoot()
 
 const findRoot = (): string => {
   const result = findUpSync([

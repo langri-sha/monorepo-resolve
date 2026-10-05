@@ -38,6 +38,15 @@ test('resolves the monorepo root correctly', () => {
   expect(monorepo.resolve()).toBe(path.resolve(__dirname, '..'))
 })
 
+test('resolves against the configured root', () => {
+  const newRoot = temporaryDirectory()
+  monorepo.root = newRoot
+
+  expect(monorepo.resolve('build', 'app')).toBe(
+    path.join(newRoot, 'build', 'app'),
+  )
+})
+
 test.each(['bun.lock', 'bun.lockb'])('finds the root by %s', (lockfile) => {
   const root = temporaryDirectory()
   const cwd = path.join(root, 'packages', 'app')
