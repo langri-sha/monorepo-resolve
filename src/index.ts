@@ -25,7 +25,7 @@ export default {
   },
 }
 
-const getRoot = (): string => root || findRoot()
+const getRoot = (): string => root || process.env.MONOREPO_ROOT || findRoot()
 
 const findRoot = (): string => {
   const result = findUpSync([

@@ -33,6 +33,16 @@ monorepo.root = temporaryDirectory()
 monorepo.resolve('build', 'myapp') === '/tmp/aa11bb22/build/myapp'
 ```
 
+The setter only affects the current process. To reach child processes, such as
+Vitest's workers, set `MONOREPO_ROOT` instead:
+
+```sh
+MONOREPO_ROOT=/tmp/aa11bb22 vitest
+```
+
+The setter takes precedence over `MONOREPO_ROOT`, which takes precedence over
+detection.
+
 ## See
 
 - [`find-up`]
