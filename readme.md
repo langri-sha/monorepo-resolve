@@ -25,6 +25,14 @@ resolve('build', 'myapp') === '/workspaces/acme-monorepo/build/myapp'
 resolve() === '/workspaces/acme-monorepo'
 ```
 
+`resolveAsync` does the same without blocking on the lookup:
+
+```js
+import { resolveAsync } from 'monorepo-resolve'
+
+await resolveAsync('build', 'myapp')
+```
+
 From CommonJS, `require('monorepo-resolve')` returns the same named exports.
 
 The detected root is cached per starting directory. To anchor on a module's own

@@ -1,6 +1,6 @@
 import path from 'node:path'
 
-import { findUpSync } from 'find-up'
+import { findUp, findUpSync } from 'find-up'
 
 export interface ContextOptions {
   /**
@@ -17,6 +17,11 @@ export interface Context {
    * upwards from the context's `cwd`. Without segments, returns the root.
    */
   resolve: (...pathSegments: string[]) => string
+
+  /**
+   * Like `resolve`, but looks for the lockfile asynchronously.
+   */
+  resolveAsync: (...pathSegments: string[]) => Promise<string>
 }
 
 const lockfiles = [
@@ -30,8 +35,9 @@ const lockfiles = [
 const roots = new Map<string, string>()
 
 /**
- * Creates a context anchored on `cwd`. Lookups are synchronous, throw if the
- * root cannot be resolved, and cache detected roots per start directory.
+ * Creates a context anchored on `cwd`. Lookups fail with
+ * `ERR_MONOREPO_ROOT_NOT_FOUND` if the root cannot be resolved, and share a
+ * cache of detected roots per start directory.
  */
 export const context = ({ cwd }: ContextOptions = {}): Context => {
   const start = cwd === undefined ? undefined : path.resolve(cwd)
@@ -40,6 +46,13 @@ export const context = ({ cwd }: ContextOptions = {}): Context => {
     resolve: (...pathSegments) =>
       path.resolve(
         process.env.MONOREPO_ROOT || detectRoot(start ?? process.cwd()),
+        ...pathSegments,
+      ),
+
+    resolveAsync: async (...pathSegments) =>
+      path.resolve(
+        process.env.MONOREPO_ROOT ||
+          (await detectRootAsync(start ?? process.cwd())),
         ...pathSegments,
       ),
   }
@@ -53,24 +66,29 @@ const workingDirectory = context()
  */
 export const resolve = workingDirectory.resolve
 
-const detectRoot = (start: string): string => {
-  let detected = roots.get(start)
+/**
+ * Like `resolve`, but looks for the lockfile asynchronously.
+ */
+export const resolveAsync = workingDirectory.resolveAsync
 
-  if (!detected) {
-    const result = findUpSync(lockfiles, { cwd: start })
+const detectRoot = (start: string): string =>
+  roots.get(start) ?? cacheRoot(start, findUpSync(lockfiles, { cwd: start }))
 
-    if (!result) {
-      throw Object.assign(
-        new Error(
-          `Could not find the monorepo root looking upwards from ${start}: no lockfile (${lockfiles.join(', ')}).`,
-        ),
-        { code: 'ERR_MONOREPO_ROOT_NOT_FOUND' },
-      )
-    }
+const detectRootAsync = async (start: string): Promise<string> =>
+  roots.get(start) ?? cacheRoot(start, await findUp(lockfiles, { cwd: start }))
 
-    detected = path.dirname(result)
-    roots.set(start, detected)
+const cacheRoot = (start: string, lockfile: string | undefined): string => {
+  if (!lockfile) {
+    throw Object.assign(
+      new Error(
+        `Could not find the monorepo root looking upwards from ${start}: no lockfile (${lockfiles.join(', ')}).`,
+      ),
+      { code: 'ERR_MONOREPO_ROOT_NOT_FOUND' },
+    )
   }
 
-  return detected
+  const root = path.dirname(lockfile)
+  roots.set(start, root)
+
+  return root
 }
