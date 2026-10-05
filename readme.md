@@ -22,6 +22,7 @@ until a package manager's lockfile is found, or an error with the code
 import { resolve } from 'monorepo-resolve'
 
 resolve('build', 'myapp') === '/workspaces/acme-monorepo/build/myapp'
+resolve() === '/workspaces/acme-monorepo'
 ```
 
 From CommonJS, `require('monorepo-resolve')` returns the same named exports.
@@ -35,15 +36,6 @@ import { context } from 'monorepo-resolve'
 const local = context({ cwd: import.meta.dirname })
 
 local.resolve('build', 'myapp')
-local.root
-```
-
-The default export is the working directory's context:
-
-```js
-import monorepo from 'monorepo-resolve'
-
-monorepo.root === '/workspaces/acme-monorepo'
 ```
 
 To switch the root, for example during tests, set `MONOREPO_ROOT`. It takes

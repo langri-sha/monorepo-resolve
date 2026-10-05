@@ -53,7 +53,7 @@ in `devEngines`, where `actions/setup-node` reads it.
 
 ## Tests
 
-`monorepo.root` resolves from the working directory, so each test builds its own
+`resolve` looks upwards from the working directory, so each test builds its own
 fixture in a temporary directory and mocks `process.cwd()` into it. None of them
 depend on this repository's own root or where Vitest runs from.
 
