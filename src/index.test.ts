@@ -108,6 +108,37 @@ test('ignores an empty MONOREPO_ROOT', () => {
   expect(monorepo.root).toBe(root)
 })
 
+test('caches the root per start directory', () => {
+  const root = fixture({ 'pnpm-lock.yaml': '' })
+
+  expect(monorepo.root).toBe(root)
+
+  writeFileSync(path.join(root, 'packages', 'app', 'yarn.lock'), '')
+
+  expect(monorepo.root).toBe(root)
+})
+
+test('anchors a context on an explicit cwd', () => {
+  const root = fixture({ 'pnpm-lock.yaml': '', 'tools/yarn.lock': '' })
+  const tools = path.join(root, 'tools')
+  const context = monorepo.context({ cwd: tools })
+
+  expect(context.root).toBe(tools)
+  expect(context.resolve('build')).toBe(path.join(tools, 'build'))
+  expect(monorepo.context({ cwd: '../../tools' }).root).toBe(tools)
+  expect(monorepo.root).toBe(root)
+})
+
+test('a context honors the configured root', () => {
+  const root = fixture({ 'pnpm-lock.yaml': '' })
+  const context = monorepo.context({ cwd: root })
+  const newRoot = temporaryDirectory()
+  monorepo.root = newRoot
+
+  expect(context.root).toBe(newRoot)
+  expect(context.resolve('build')).toBe(path.join(newRoot, 'build'))
+})
+
 test('throws when no root is found', () => {
   fixture()
 

@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Cache the detected root and anchor on a cwd through context()",
+  "packageName": "monorepo-resolve",
+  "email": "filip.dupanovic@gmail.com",
+  "dependentChangeType": "patch"
+}
