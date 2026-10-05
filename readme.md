@@ -38,27 +38,27 @@ local.resolve('build', 'myapp')
 local.root
 ```
 
-If you need to switch the root, for example during tests, you can manually
-configure it on the default export:
+The default export is the working directory's context:
 
 ```js
 import monorepo from 'monorepo-resolve'
 
-monorepo.root = temporaryDirectory()
-
-// ...elsewhere in your codebase
-resolve('build', 'myapp') === '/tmp/aa11bb22/build/myapp'
+monorepo.root === '/workspaces/acme-monorepo'
 ```
 
-The setter only affects the current process. To reach child processes, such as
-Vitest's workers, set `MONOREPO_ROOT` instead:
+To switch the root, for example during tests, set `MONOREPO_ROOT`. It takes
+precedence over detection in every context, is read on each lookup, and reaches
+child processes such as Vitest's workers:
 
 ```sh
 MONOREPO_ROOT=/tmp/aa11bb22 vitest
 ```
 
-The setter takes precedence over `MONOREPO_ROOT`, which takes precedence over
-detection.
+```js
+vi.stubEnv('MONOREPO_ROOT', temporaryDirectory())
+
+resolve('build', 'myapp') === '/tmp/aa11bb22/build/myapp'
+```
 
 ## See
 
