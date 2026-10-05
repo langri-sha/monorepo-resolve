@@ -23,6 +23,16 @@ import monorepo from 'monorepo-resolve'
 monorepo.resolve('build', 'myapp') === '/workspaces/acme-monorepo/build/myapp'
 ```
 
+The detected root is cached per starting directory. To anchor on a module's own
+location rather than the working directory, create a context with a `cwd`:
+
+```js
+const local = monorepo.context({ cwd: import.meta.dirname })
+
+local.resolve('build', 'myapp')
+local.root
+```
+
 If you need to switch the root, for example during tests, you can manually
 configure the resolved root:
 
