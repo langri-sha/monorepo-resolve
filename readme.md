@@ -14,33 +14,40 @@ npm install -D monorepo-resolve
 ```
 
 The root of your repository will be synchronously resolved by going upwards
-until a package manager's lockfile is found, or an error is thrown:
+until a package manager's lockfile is found, or an error with the code
+`ERR_MONOREPO_ROOT_NOT_FOUND` is thrown:
 
 ```js
 // /workspaces/acme-monorepo/packages/myapp/index.js
-import monorepo from 'monorepo-resolve'
+import { resolve } from 'monorepo-resolve'
 
-monorepo.resolve('build', 'myapp') === '/workspaces/acme-monorepo/build/myapp'
+resolve('build', 'myapp') === '/workspaces/acme-monorepo/build/myapp'
 ```
+
+From CommonJS, `require('monorepo-resolve')` returns the same named exports.
 
 The detected root is cached per starting directory. To anchor on a module's own
 location rather than the working directory, create a context with a `cwd`:
 
 ```js
-const local = monorepo.context({ cwd: import.meta.dirname })
+import { context } from 'monorepo-resolve'
+
+const local = context({ cwd: import.meta.dirname })
 
 local.resolve('build', 'myapp')
 local.root
 ```
 
 If you need to switch the root, for example during tests, you can manually
-configure the resolved root:
+configure it on the default export:
 
 ```js
+import monorepo from 'monorepo-resolve'
+
 monorepo.root = temporaryDirectory()
 
 // ...elsewhere in your codebase
-monorepo.resolve('build', 'myapp') === '/tmp/aa11bb22/build/myapp'
+resolve('build', 'myapp') === '/tmp/aa11bb22/build/myapp'
 ```
 
 The setter only affects the current process. To reach child processes, such as

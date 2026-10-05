@@ -114,8 +114,19 @@ const project = new Project({
 })
 
 project.package?.addField('packageManager', 'pnpm@12.8.2')
+project.package?.addField('exports', {
+  '.': './src/index.ts',
+  './package.json': './package.json',
+})
 project.package?.addField('publishConfig', {
   access: 'public',
+  exports: {
+    '.': {
+      types: './dist/index.d.ts',
+      default: './dist/index.js',
+    },
+    './package.json': './package.json',
+  },
   main: 'dist/index.js',
   types: 'dist/index.d.ts',
 })
