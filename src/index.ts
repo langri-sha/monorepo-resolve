@@ -12,9 +12,9 @@ export interface ContextOptions {
 
 export interface Context {
   /**
-   * The monorepo root directory: the configured root, else `MONOREPO_ROOT`,
-   * else the nearest directory with a package manager's lockfile, looking
-   * upwards from the context's `cwd`.
+   * The monorepo root directory: `MONOREPO_ROOT`, else the nearest directory
+   * with a package manager's lockfile, looking upwards from the context's
+   * `cwd`.
    */
   readonly root: string
 
@@ -32,8 +32,6 @@ const lockfiles = [
   'yarn.lock',
 ]
 
-let root: string | undefined
-
 const roots = new Map<string, string>()
 
 /**
@@ -44,7 +42,7 @@ export const context = ({ cwd }: ContextOptions = {}): Context => {
   const start = cwd === undefined ? undefined : path.resolve(cwd)
 
   const getRoot = (): string =>
-    root || process.env.MONOREPO_ROOT || detectRoot(start ?? process.cwd())
+    process.env.MONOREPO_ROOT || detectRoot(start ?? process.cwd())
 
   return {
     get root() {
@@ -85,16 +83,4 @@ const detectRoot = (start: string): string => {
   return detected
 }
 
-export default {
-  resolve,
-
-  context,
-
-  get root(): string {
-    return workingDirectory.root
-  },
-
-  set root(newRoot: string | undefined) {
-    root = newRoot
-  },
-}
+export default workingDirectory

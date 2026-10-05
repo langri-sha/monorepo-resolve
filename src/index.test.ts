@@ -3,7 +3,6 @@ import path from 'node:path'
 
 import {
   afterEach,
-  beforeEach,
   expect,
   temporaryDirectory,
   test,
@@ -34,10 +33,6 @@ const fixture = (files: Record<string, string> = {}): string => {
   return root
 }
 
-beforeEach(() => {
-  monorepo.root = undefined
-})
-
 afterEach(() => {
   vi.restoreAllMocks()
   vi.unstubAllEnvs()
@@ -62,27 +57,6 @@ test('resolves paths against the root', () => {
   expect(monorepo.resolve('build', 'app')).toBe(path.join(root, 'build', 'app'))
 })
 
-test('root can be updated correctly', () => {
-  const root = fixture({ 'pnpm-lock.yaml': '' })
-  const newRoot = temporaryDirectory()
-  monorepo.root = newRoot
-
-  expect(monorepo.root).toBe(newRoot)
-
-  monorepo.root = undefined
-  expect(monorepo.root).toBe(root)
-})
-
-test('resolves against the configured root', () => {
-  fixture({ 'pnpm-lock.yaml': '' })
-  const newRoot = temporaryDirectory()
-  monorepo.root = newRoot
-
-  expect(monorepo.resolve('build', 'app')).toBe(
-    path.join(newRoot, 'build', 'app'),
-  )
-})
-
 test('honors MONOREPO_ROOT', () => {
   fixture({ 'pnpm-lock.yaml': '' })
   const envRoot = temporaryDirectory()
@@ -90,15 +64,6 @@ test('honors MONOREPO_ROOT', () => {
 
   expect(monorepo.root).toBe(envRoot)
   expect(monorepo.resolve('build')).toBe(path.join(envRoot, 'build'))
-})
-
-test('prefers the configured root over MONOREPO_ROOT', () => {
-  fixture({ 'pnpm-lock.yaml': '' })
-  const newRoot = temporaryDirectory()
-  vi.stubEnv('MONOREPO_ROOT', temporaryDirectory())
-  monorepo.root = newRoot
-
-  expect(monorepo.root).toBe(newRoot)
 })
 
 test('ignores an empty MONOREPO_ROOT', () => {
@@ -121,22 +86,22 @@ test('caches the root per start directory', () => {
 test('anchors a context on an explicit cwd', () => {
   const root = fixture({ 'pnpm-lock.yaml': '', 'tools/yarn.lock': '' })
   const tools = path.join(root, 'tools')
-  const context = monorepo.context({ cwd: tools })
+  const local = context({ cwd: tools })
 
-  expect(context.root).toBe(tools)
-  expect(context.resolve('build')).toBe(path.join(tools, 'build'))
-  expect(monorepo.context({ cwd: '../../tools' }).root).toBe(tools)
+  expect(local.root).toBe(tools)
+  expect(local.resolve('build')).toBe(path.join(tools, 'build'))
+  expect(context({ cwd: '../../tools' }).root).toBe(tools)
   expect(monorepo.root).toBe(root)
 })
 
-test('a context honors the configured root', () => {
+test('a context honors MONOREPO_ROOT', () => {
   const root = fixture({ 'pnpm-lock.yaml': '' })
-  const context = monorepo.context({ cwd: root })
-  const newRoot = temporaryDirectory()
-  monorepo.root = newRoot
+  const local = context({ cwd: root })
+  const envRoot = temporaryDirectory()
+  vi.stubEnv('MONOREPO_ROOT', envRoot)
 
-  expect(context.root).toBe(newRoot)
-  expect(context.resolve('build')).toBe(path.join(newRoot, 'build'))
+  expect(local.root).toBe(envRoot)
+  expect(local.resolve('build')).toBe(path.join(envRoot, 'build'))
 })
 
 test('throws when no root is found', () => {
@@ -153,10 +118,8 @@ test('throws when no root is found', () => {
   )
 })
 
-test('exports resolve and context by name', () => {
-  const root = fixture({ 'pnpm-lock.yaml': '', 'tools/yarn.lock': '' })
-  const tools = path.join(root, 'tools')
+test('exports resolve by name', () => {
+  const root = fixture({ 'pnpm-lock.yaml': '' })
 
   expect(resolve('build')).toBe(path.join(root, 'build'))
-  expect(context({ cwd: tools }).root).toBe(tools)
 })
