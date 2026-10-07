@@ -1,8 +1,17 @@
 # Change Log - monorepo-resolve
 
-<!-- This log was last generated on Mon, 05 Oct 2026 21:56:31 GMT and should not be manually modified. -->
+<!-- This log was last generated on Wed, 07 Oct 2026 10:15:47 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 1.0.1
+
+Wed, 07 Oct 2026 10:15:47 GMT
+
+### Patches
+
+- Update dependency pnpm to v12.9.0
+- Update dependency pnpm to v12.9.1
 
 ## 1.0.0
 

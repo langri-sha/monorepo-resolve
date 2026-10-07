@@ -2,6 +2,27 @@
   "name": "monorepo-resolve",
   "entries": [
     {
+      "date": "Wed, 07 Oct 2026 10:15:47 GMT",
+      "version": "1.0.1",
+      "tag": "monorepo-resolve_v1.0.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "email not defined",
+            "package": "monorepo-resolve",
+            "commit": "0796076bb8df3efa448ba24254ee05347786402f",
+            "comment": "Update dependency pnpm to v12.9.0"
+          },
+          {
+            "author": "email not defined",
+            "package": "monorepo-resolve",
+            "commit": "0796076bb8df3efa448ba24254ee05347786402f",
+            "comment": "Update dependency pnpm to v12.9.1"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 05 Oct 2026 21:56:31 GMT",
       "version": "1.0.0",
       "tag": "monorepo-resolve_v1.0.0",
