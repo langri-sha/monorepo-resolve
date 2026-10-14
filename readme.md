@@ -64,4 +64,10 @@ resolve('build', 'myapp') === '/tmp/aa11bb22/build/myapp'
 
 - [`find-up`]
 
+## Contributing
+
+See [CONTRIBUTING.md] in `langri-sha/github`.
+
+[contributing.md]:
+  https://github.com/langri-sha/github/blob/main/CONTRIBUTING.md
 [`find-up`]: https://github.com/sindresorhus/find-up
