@@ -44,8 +44,7 @@ workflow is safe to rerun.
 
 `main` and `exports` point at `src/` in the repository, and `publishConfig`
 swaps them and `types` for `dist/`, which `prepublishOnly` builds. The tarball
-ships `src/` beside `dist/`, which the declaration maps point into, as every
-release from `langri-sha/projen` did.
+ships `src/` beside `dist/`, which the declaration maps point into.
 
 There is deliberately no `engines` field. Published from the root, it would bind
 consumers to the Node.js release this repository is developed on, so that lives
@@ -56,16 +55,3 @@ in `devEngines`, where `actions/setup-node` reads it.
 `resolve` looks upwards from the working directory, so each test builds its own
 fixture in a temporary directory and mocks `process.cwd()` into it. None of them
 depend on this repository's own root or where Vitest runs from.
-
-## Provenance
-
-Extracted from `langri-sha/projen` at `6417104d` on 2026-10-01 with
-`git filter-repo --subdirectory-filter packages/monorepo`. All 120 commits that
-touched the package keep their trees, authorship, dates and messages. The
-history reaches back to 2024-04-14, when the package started in
-`langri-sha/langri-sha.com`, which handed it to projen in July 2026. Issue and
-pull request numbers in those older messages refer to the two source
-repositories.
-
-Up to 0.5.18 it was published as `@langri-sha/monorepo`, which is deprecated in
-favour of this name.
