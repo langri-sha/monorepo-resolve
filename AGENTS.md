@@ -42,7 +42,7 @@ rerun. Beachball's own `gitTags` stays off, since it would name the tags
 `monorepo-resolve_v<version>`.
 
 `main` and `exports` point at `src/` in the repository, and `publishConfig`
-swaps them and `types` for `dist/`, which `prepublishOnly` builds. The tarball
+points them and `types` at `dist/`, which `prepublishOnly` builds. The tarball
 ships `src/` beside `dist/`, which the declaration maps point into.
 
 There is deliberately no `engines` field. Published from the root, it would bind
