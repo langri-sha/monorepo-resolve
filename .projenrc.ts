@@ -27,7 +27,7 @@ const project = new Project({
       '@langri-sha/tsconfig@1.1.1',
       '@langri-sha/vitest@0.2.3',
       '@types/node@24.19.2',
-      'vitest@5.0.3',
+      'vitest@5.0.4',
     ],
   },
   beachball: {
