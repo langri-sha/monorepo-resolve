@@ -9,3 +9,5 @@ __snapshots__/
 /AGENTS.md
 /CODEOWNERS
 /change/
+/dagger.lock
+/dagger.toml
