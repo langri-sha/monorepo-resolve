@@ -25,11 +25,15 @@ pnpm eslint . && pnpm prettier --check .
 pnpm change                             # write a change file
 ```
 
-CI (`workspace.yml` → `langri-sha/github` `check.yml`) runs ESLint, Prettier,
-the `package.json` checks, `tsc --build`, Vitest and, on pull requests,
-`beachball check`. It fails when synthesized files drift from `.projenrc.ts` or
-the package lacks a change file. On Renovate pull requests it re-synthesizes and
-commits the result.
+CI (`workspace.yml` → `langri-sha/github` `check.yml`) runs `dagger check`, with
+the modules `dagger.toml` installs: ESLint, Prettier, the `package.json` checks,
+`tsc --build`, Vitest and `beachball check`. It fails when synthesized files
+drift from `.projenrc.ts` or the package lacks a change file. On Renovate pull
+requests it re-synthesizes through Dagger and commits the result. `dagger check`
+runs the same checks locally. Beachball's needs `.merge-base/` first, which
+langri-sha/github's
+[merge-base script](https://github.com/langri-sha/github/tree/main/actions/merge-base#locally)
+writes.
 
 ## Release
 
