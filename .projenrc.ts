@@ -43,6 +43,8 @@ const project = new Project({
         'AGENTS.md',
         'CODEOWNERS',
         'beachball.config.cjs',
+        'dagger.lock',
+        'dagger.toml',
         'eslint.config.js',
         'lint-staged.config.js',
         'pnpm-lock.yaml',
@@ -73,6 +75,8 @@ const project = new Project({
       '/AGENTS.md',
       '/CODEOWNERS',
       '/change/',
+      '/dagger.lock',
+      '/dagger.toml',
     ],
   },
   pnpmWorkspace: {
