@@ -2,6 +2,181 @@
   "name": "monorepo-resolve",
   "entries": [
     {
+      "date": "Fri, 23 Oct 2026 21:13:40 GMT",
+      "version": "1.1.0",
+      "tag": "monorepo-resolve_v1.1.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "filip.dupanovic@gmail.com",
+            "package": "monorepo-resolve",
+            "commit": "15d1a33a251e39c00d2a0cec8c2ee32f3c2391d6",
+            "comment": "Find the root by deno.lock, too"
+          },
+          {
+            "author": "email not defined",
+            "package": "monorepo-resolve",
+            "commit": "15d1a33a251e39c00d2a0cec8c2ee32f3c2391d6",
+            "comment": "Update dependency @langri-sha/projen-project to v0.39.0"
+          },
+          {
+            "author": "email not defined",
+            "package": "monorepo-resolve",
+            "commit": "15d1a33a251e39c00d2a0cec8c2ee32f3c2391d6",
+            "comment": "Update langri-sha projen toolchain"
+          },
+          {
+            "author": "email not defined",
+            "package": "monorepo-resolve",
+            "commit": "15d1a33a251e39c00d2a0cec8c2ee32f3c2391d6",
+            "comment": "Update dependency @langri-sha/projen-project to v0.37.0"
+          },
+          {
+            "author": "email not defined",
+            "package": "monorepo-resolve",
+            "commit": "15d1a33a251e39c00d2a0cec8c2ee32f3c2391d6",
+            "comment": "Update dependency pnpm to v12.11.0"
+          },
+          {
+            "author": "email not defined",
+            "package": "monorepo-resolve",
+            "commit": "15d1a33a251e39c00d2a0cec8c2ee32f3c2391d6",
+            "comment": "Update dependency pnpm to v12.10.1"
+          },
+          {
+            "author": "email not defined",
+            "package": "monorepo-resolve",
+            "commit": "15d1a33a251e39c00d2a0cec8c2ee32f3c2391d6",
+            "comment": "Update dependency @langri-sha/projen-project to v0.36.0"
+          },
+          {
+            "author": "email not defined",
+            "package": "monorepo-resolve",
+            "commit": "15d1a33a251e39c00d2a0cec8c2ee32f3c2391d6",
+            "comment": "Update dependency pnpm to v12.13.0"
+          },
+          {
+            "author": "email not defined",
+            "package": "monorepo-resolve",
+            "commit": "15d1a33a251e39c00d2a0cec8c2ee32f3c2391d6",
+            "comment": "Update dependency @langri-sha/projen-project to v0.40.0"
+          },
+          {
+            "author": "email not defined",
+            "package": "monorepo-resolve",
+            "commit": "15d1a33a251e39c00d2a0cec8c2ee32f3c2391d6",
+            "comment": "Update dependency @types/node to v24.19.2"
+          },
+          {
+            "author": "email not defined",
+            "package": "monorepo-resolve",
+            "commit": "15d1a33a251e39c00d2a0cec8c2ee32f3c2391d6",
+            "comment": "Update dependency pnpm to v12.11.2"
+          },
+          {
+            "author": "email not defined",
+            "package": "monorepo-resolve",
+            "commit": "15d1a33a251e39c00d2a0cec8c2ee32f3c2391d6",
+            "comment": "Update dependency pnpm to v12.14.0"
+          },
+          {
+            "author": "email not defined",
+            "package": "monorepo-resolve",
+            "commit": "15d1a33a251e39c00d2a0cec8c2ee32f3c2391d6",
+            "comment": "Update dependency vitest to v5.0.4"
+          },
+          {
+            "author": "email not defined",
+            "package": "monorepo-resolve",
+            "commit": "15d1a33a251e39c00d2a0cec8c2ee32f3c2391d6",
+            "comment": "Update dependency @langri-sha/eslint-config to v0.10.0"
+          },
+          {
+            "author": "email not defined",
+            "package": "monorepo-resolve",
+            "commit": "15d1a33a251e39c00d2a0cec8c2ee32f3c2391d6",
+            "comment": "Update langri-sha projen toolchain"
+          },
+          {
+            "author": "email not defined",
+            "package": "monorepo-resolve",
+            "commit": "15d1a33a251e39c00d2a0cec8c2ee32f3c2391d6",
+            "comment": "Update dependency pnpm to v12.11.1"
+          },
+          {
+            "author": "email not defined",
+            "package": "monorepo-resolve",
+            "commit": "15d1a33a251e39c00d2a0cec8c2ee32f3c2391d6",
+            "comment": "Update dependency @langri-sha/projen-project to v0.33.0"
+          },
+          {
+            "author": "email not defined",
+            "package": "monorepo-resolve",
+            "commit": "15d1a33a251e39c00d2a0cec8c2ee32f3c2391d6",
+            "comment": "Update dependency @langri-sha/projen-project to v0.38.2"
+          },
+          {
+            "author": "email not defined",
+            "package": "monorepo-resolve",
+            "commit": "15d1a33a251e39c00d2a0cec8c2ee32f3c2391d6",
+            "comment": "Update dependency vitest to v5.0.5"
+          },
+          {
+            "author": "email not defined",
+            "package": "monorepo-resolve",
+            "commit": "15d1a33a251e39c00d2a0cec8c2ee32f3c2391d6",
+            "comment": "Update dependency pnpm to v12.10.0"
+          },
+          {
+            "author": "filip.dupanovic@gmail.com",
+            "package": "monorepo-resolve",
+            "commit": "15d1a33a251e39c00d2a0cec8c2ee32f3c2391d6",
+            "comment": "Find the root by npm-shrinkwrap.json, too"
+          },
+          {
+            "author": "filip.dupanovic@gmail.com",
+            "package": "monorepo-resolve",
+            "commit": "15d1a33a251e39c00d2a0cec8c2ee32f3c2391d6",
+            "comment": "Find the root by vlt-lock.json, too"
+          }
+        ],
+        "none": [
+          {
+            "author": "email not defined",
+            "package": "monorepo-resolve",
+            "commit": "15d1a33a251e39c00d2a0cec8c2ee32f3c2391d6",
+            "comment": "Opt into the default Worktrunk hooks"
+          },
+          {
+            "author": "filip.dupanovic@gmail.com",
+            "package": "monorepo-resolve",
+            "commit": "15d1a33a251e39c00d2a0cec8c2ee32f3c2391d6",
+            "comment": "Keep the Dagger files out of the package"
+          },
+          {
+            "author": "filip.dupanovic@gmail.com",
+            "package": "monorepo-resolve",
+            "commit": "15d1a33a251e39c00d2a0cec8c2ee32f3c2391d6",
+            "comment": "Link the contributing guide from the readme"
+          },
+          {
+            "author": "filip.dupanovic@gmail.com",
+            "package": "monorepo-resolve",
+            "commit": "15d1a33a251e39c00d2a0cec8c2ee32f3c2391d6",
+            "comment": "Stop Claude Code adding attribution to commits and pull requests"
+          }
+        ],
+        "minor": [
+          {
+            "author": "filip.dupanovic@gmail.com",
+            "package": "monorepo-resolve",
+            "commit": "15d1a33a251e39c00d2a0cec8c2ee32f3c2391d6",
+            "comment": "Require Node.js 24.22.1, which fixes CVE-2026-111497"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 07 Oct 2026 10:15:47 GMT",
       "version": "1.0.1",
       "tag": "monorepo-resolve_v1.0.1",

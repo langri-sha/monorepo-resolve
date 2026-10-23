@@ -1,8 +1,41 @@
 # Change Log - monorepo-resolve
 
-<!-- This log was last generated on Wed, 07 Oct 2026 10:15:47 GMT and should not be manually modified. -->
+<!-- This log was last generated on Fri, 23 Oct 2026 21:13:40 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 1.1.0
+
+Fri, 23 Oct 2026 21:13:40 GMT
+
+### Minor changes
+
+- Require Node.js 24.22.1, which fixes CVE-2026-111497 (filip.dupanovic@gmail.com)
+
+### Patches
+
+- Find the root by deno.lock, too (filip.dupanovic@gmail.com)
+- Update dependency @langri-sha/projen-project to v0.39.0
+- Update langri-sha projen toolchain
+- Update dependency @langri-sha/projen-project to v0.37.0
+- Update dependency pnpm to v12.11.0
+- Update dependency pnpm to v12.10.1
+- Update dependency @langri-sha/projen-project to v0.36.0
+- Update dependency pnpm to v12.13.0
+- Update dependency @langri-sha/projen-project to v0.40.0
+- Update dependency @types/node to v24.19.2
+- Update dependency pnpm to v12.11.2
+- Update dependency pnpm to v12.14.0
+- Update dependency vitest to v5.0.4
+- Update dependency @langri-sha/eslint-config to v0.10.0
+- Update langri-sha projen toolchain
+- Update dependency pnpm to v12.11.1
+- Update dependency @langri-sha/projen-project to v0.33.0
+- Update dependency @langri-sha/projen-project to v0.38.2
+- Update dependency vitest to v5.0.5
+- Update dependency pnpm to v12.10.0
+- Find the root by npm-shrinkwrap.json, too (filip.dupanovic@gmail.com)
+- Find the root by vlt-lock.json, too (filip.dupanovic@gmail.com)
 
 ## 1.0.1
 
