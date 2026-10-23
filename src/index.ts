@@ -31,6 +31,7 @@ const lockfiles = [
   'npm-shrinkwrap.json',
   'package-lock.json',
   'pnpm-lock.yaml',
+  'vlt-lock.json',
   'yarn.lock',
 ]
 
