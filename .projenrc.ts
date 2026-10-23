@@ -14,7 +14,7 @@ const project = new Project({
     keywords: ['lockfile', 'monorepo', 'path', 'root', 'workspace'],
     license: 'MIT',
     licensed: true,
-    minNodeVersion: '24.16.0',
+    minNodeVersion: '24.22.1',
     repository: 'git+https://github.com/langri-sha/monorepo-resolve.git',
     type: 'module',
 
