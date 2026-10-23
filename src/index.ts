@@ -27,6 +27,7 @@ export interface Context {
 const lockfiles = [
   'bun.lock',
   'bun.lockb',
+  'npm-shrinkwrap.json',
   'package-lock.json',
   'pnpm-lock.yaml',
   'yarn.lock',

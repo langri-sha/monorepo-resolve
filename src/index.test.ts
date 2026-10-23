@@ -57,6 +57,7 @@ describe.each(['resolve', 'resolveAsync'] as const)('%s', (method) => {
   test.each([
     'bun.lock',
     'bun.lockb',
+    'npm-shrinkwrap.json',
     'package-lock.json',
     'pnpm-lock.yaml',
     'yarn.lock',
@@ -132,7 +133,7 @@ describe.each(['resolve', 'resolveAsync'] as const)('%s', (method) => {
       `from ${path.join(root, 'packages', 'app')}:`,
     )
     await expect(lookup(workingDirectory)).rejects.toThrow(
-      'no lockfile (bun.lock, bun.lockb, package-lock.json, pnpm-lock.yaml, yarn.lock)',
+      'no lockfile (bun.lock, bun.lockb, npm-shrinkwrap.json, package-lock.json, pnpm-lock.yaml, yarn.lock)',
     )
   })
 })
