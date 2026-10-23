@@ -61,6 +61,7 @@ describe.each(['resolve', 'resolveAsync'] as const)('%s', (method) => {
     'npm-shrinkwrap.json',
     'package-lock.json',
     'pnpm-lock.yaml',
+    'vlt-lock.json',
     'yarn.lock',
   ])('finds the root by %s', async (lockfile) => {
     const root = fixture({ [lockfile]: '' })
@@ -134,7 +135,7 @@ describe.each(['resolve', 'resolveAsync'] as const)('%s', (method) => {
       `from ${path.join(root, 'packages', 'app')}:`,
     )
     await expect(lookup(workingDirectory)).rejects.toThrow(
-      'no lockfile (bun.lock, bun.lockb, deno.lock, npm-shrinkwrap.json, package-lock.json, pnpm-lock.yaml, yarn.lock)',
+      'no lockfile (bun.lock, bun.lockb, deno.lock, npm-shrinkwrap.json, package-lock.json, pnpm-lock.yaml, vlt-lock.json, yarn.lock)',
     )
   })
 })
