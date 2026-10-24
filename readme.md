@@ -1,9 +1,24 @@
 # monorepo-resolve
 
-A utility package that helps you resolve paths relative to your monorepo root.
+[![npm version](https://img.shields.io/npm/v/monorepo-resolve)](https://www.npmjs.com/package/monorepo-resolve)
+[![CI](https://github.com/langri-sha/monorepo-resolve/actions/workflows/workspace.yml/badge.svg?branch=main)](https://github.com/langri-sha/monorepo-resolve/actions/workflows/workspace.yml)
+
+Resolve paths relative to your monorepo root from any workspace package.
 
 Useful when you want packages from your workspaces to read and write from a
 common path, even when changing directories in your workspace.
+
+Supported package managers:
+
+- Bun (`bun.lock`, `bun.lockb`)
+- Deno (`deno.lock`)
+- npm (`npm-shrinkwrap.json`, `package-lock.json`)
+- pnpm (`pnpm-lock.yaml`)
+- vlt (`vlt-lock.json`)
+- Yarn (`yarn.lock`)
+
+Root detection searches upwards from the starting directory; the nearest
+directory containing a supported lockfile wins.
 
 ## Usage
 
