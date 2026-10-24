@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "Clarify supported package managers and add README status badges",
+  "packageName": "monorepo-resolve",
+  "email": "filip.dupanovic@gmail.com",
+  "dependentChangeType": "patch"
+}
