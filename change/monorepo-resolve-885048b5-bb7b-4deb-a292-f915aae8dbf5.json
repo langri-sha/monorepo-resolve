@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "Let the preset supply Vitest",
-  "packageName": "monorepo-resolve",
-  "email": "filip.dupanovic@gmail.com",
-  "dependentChangeType": "none"
-}

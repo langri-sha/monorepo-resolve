@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "Let the preset supply the config packages",
-  "packageName": "monorepo-resolve",
-  "email": "filip.dupanovic@gmail.com",
-  "dependentChangeType": "none"
-}

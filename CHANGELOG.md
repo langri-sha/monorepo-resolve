@@ -1,8 +1,26 @@
 # Change Log - monorepo-resolve
 
-<!-- This log was last generated on Fri, 23 Oct 2026 21:13:40 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sat, 31 Oct 2026 17:00:44 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 1.1.1
+
+Sat, 31 Oct 2026 17:00:44 GMT
+
+### Patches
+
+- Update dependency pnpm to v12.16.1
+- Update dependency pnpm to v12.16.0
+- Update dependency @langri-sha/projen-project to v0.42.4
+- Update langri-sha/skills digest to c0cb19c
+- Update langri-sha/skills digest to 853e261
+- Update dependency langri-sha/skills to v1.1.0
+- Update dependency @langri-sha/projen-project to v0.42.3
+- Update dependency @langri-sha/projen-project to v0.42.0
+- Update dependency @langri-sha/projen-project to v0.43.0
+- Update dependency pnpm to v12.15.0
+- Update dependency @langri-sha/projen-project to v0.42.1
 
 ## 1.1.0
 

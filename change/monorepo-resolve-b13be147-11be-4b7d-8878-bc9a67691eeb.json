@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "Commit the create-commit and create-pr skills",
-  "packageName": "monorepo-resolve",
-  "email": "filip.dupanovic@gmail.com",
-  "dependentChangeType": "none"
-}
