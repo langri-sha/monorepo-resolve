@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "Upgrade @langri-sha/tsconfig to 3.0.0",
+  "packageName": "monorepo-resolve",
+  "email": "filip.dupanovic@gmail.com",
+  "dependentChangeType": "none"
+}
