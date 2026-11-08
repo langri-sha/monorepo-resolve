@@ -112,7 +112,7 @@ const project = new Project({
   },
 })
 
-project.package?.addField('packageManager', 'pnpm@12.17.0')
+project.package?.addField('packageManager', 'pnpm@12.18.0')
 project.package?.addField('exports', {
   '.': './src/index.ts',
   './package.json': './package.json',
