@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "Bump dev dependencies with the projen toolchain",
+  "packageName": "monorepo-resolve",
+  "email": "filip.dupanovic@gmail.com",
+  "dependentChangeType": "none"
+}
